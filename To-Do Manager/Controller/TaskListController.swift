@@ -32,7 +32,6 @@ class TaskListController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadTasks()
         navigationItem.leftBarButtonItem = getEditButtonItem()
     }
     
@@ -50,15 +49,6 @@ class TaskListController: UITableViewController {
         let editButton = editButtonItem
         editButton.title = "Изменить"
         return editButton
-    }
-    
-    private func loadTasks() {
-        sectionTypesPosition.forEach { taskType in
-            tasks[taskType] = []
-        }
-        taskStorage.loadTask().forEach { task in
-            tasks[task.type]?.append(task)
-        }
     }
     
     func setTasks(_ tasksCollection: [TaskProtocol]) {
